@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="index.css" rel="stylesheet">
+</head>
+<body>
+    <h1 >Lista de Compras</h1>
+
+    <div class>
+        <input id="input">
+        <button id="button">Adicionar</button>
+    </div>
+
+    <ul id="lista">Lista</ul>
+
+    <script>
+const input = document.querySelector("input#input");
+const button = document.querySelector("button");
+const lista = document.querySelector("#lista");
+button.addEventListener("click", (event) => {
+if (input.value.length <= 2) {
+
+window.alert("O item deve ter, pelo menos, 3 letras.");
+} else {
+    const listaDeComprasLocalStorage = localStorage.getItem("listaDeCompras");
+const listaDeCompras = JSON.parse(listaDeComprasLocalStorage || "[]");
+console.log(listaDeCompras);
+
+[
+{ item: 'Feijão', comprado: true },
+{ item: 'Arroz', comprado: true },
+{ item: 'Frango', comprado: true }
+]}
+{
+const novoItem = document.createElement("li");
+
+const checkboxItem = document.createElement("input");
+
+const textItem = document.createElement("span");
+
+const removeButtonItem = document.createElement("button");
+
+textItem.textContent = input.value;
+
+checkboxItem.setAttribute("type", "checkbox");
+
+removeButtonItem.textContent = "Remover";
+
+novoItem.insertAdjacentElement("beforeend", checkboxItem);
+novoItem.insertAdjacentElement("beforeend", textItem);
+novoItem.insertAdjacentElement("beforeend", removeButtonItem);
+
+lista.appendChild(novoItem);
+
+removeButtonItem.addEventListener("click", removerItem);
+
+input.value = "";
+}
+});
+function removerItem(event) {
+lista.removeChild(event.target.parentElement);
+}
+
+const listaDeComprasLocalStorage = localStorage.getItem("listaDeCompras");
+const listaDeCompras = JSON.parse(listaDeComprasLocalStorage || "[]");
+console.log(listaDeCompras);
+
+[
+{ item: 'Feijão', comprado: false },
+{ item: 'Arroz', comprado: true },
+{ item: 'Frango', comprado: false }
+]
+localStorage.setItem("listaDeCompras", JSON.stringify(listaDeCompras));
+    </script>
+</body>
+</html>
